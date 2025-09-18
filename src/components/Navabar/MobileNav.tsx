@@ -1,0 +1,44 @@
+import { navLink } from "@/constant/constant";
+import Link from "next/link";
+import { CgClose } from "react-icons/cg";
+// define props
+
+type Props = {
+  showNav: boolean;
+  closeNav: () => void;
+};
+
+const MobileNav = ({ showNav, closeNav }: Props) => {
+  const navOpen = showNav ? "translate-x-0" : "translate-x-[-100%]";
+  return (
+    <div>
+      {/* Overlay */}
+      <div
+        className={`fixed ${navOpen} top-0 transform transition-all duration-500 z-[10000] left-0 right-0 bottom-0 bg-black opacity-70 w-full h-[100vh]`}
+      />
+
+      {/* Sidebar */}
+      <div
+        className={`text-white ${navOpen} fixed justify-center flex flex-col h-full transform transition-all
+duration-500 delay-300 w-[80%] sm:w-[60%] bg-indigo-900 space-y-6 z-[100006]`}
+      >
+        {/* NavLinks */}
+        {navLink.map((link) => (
+          <Link key={link.id} href={link.url}>
+            <p className="inline-block ml-12 text-[20px] sm:text-[25px] border-b-[1.5px] border-white pb-2">
+              {link.name}
+            </p>
+          </Link>
+        ))}
+
+        {/* Close button */}
+        <CgClose
+          onClick={closeNav}
+          className="absolute top-[0.7rem] right-[1.4rem] sm:w-8 sm:h-8 w-6 h-6 text-white cursor-pointer"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default MobileNav;

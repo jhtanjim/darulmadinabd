@@ -3,24 +3,69 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #186d46; /* Dark Green */
+  --secondary: #61ce70; /* Light Green */
+  --accent: #2e6d72; /* Teal Dark */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Utility classes */
+.text-primary {
+  color: var(--primary);
+}
+.text-secondary {
+  color: var(--secondary);
+}
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+.bg-secondary {
+  background-color: var(--secondary);
+}
+.bg-third {
+  background-color: var(--third);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+.border-secondary {
+  border-color: var(--secondary);
+}
+.border-accent {
+  border-color: var(--accent);
+}
+
+/* Nav link underline animation */
+.nav-link {
+  @apply relative w-fit block font-bold text-accent
+         after:block after:content-[''] after:absolute 
+         after:h-[3px] after:bg-[var(--secondary)] after:w-full 
+         after:scale-x-0 after:transition after:duration-300 
+         after:origin-right hover:after:scale-x-100;
+}
+
+/* Active state (keeps underline + text color) */
+.nav-link.active {
+  @apply after:scale-x-100;
+  color: var(--secondary);
 }
