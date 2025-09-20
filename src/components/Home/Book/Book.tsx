@@ -1,16 +1,14 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
 
 function Book() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   const handleFlip = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {
-        // Handle autoplay restrictions gracefully
         console.log("Audio play prevented by browser");
       });
     }
@@ -19,11 +17,7 @@ function Book() {
   return (
     <div className="min-h-screen flex justify-center items-center py-8 px-4 bg-gradient-to-br from-gray-50 to-gray-200">
       {/* Page flip sound */}
-      <audio
-        ref={audioRef}
-        preload="auto"
-        onLoadedData={() => setIsLoaded(true)}
-      >
+      <audio ref={audioRef} preload="auto">
         <source src="/page-flip.mp3" type="audio/mpeg" />
         <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+D2yHkpBSuF0/LQfC4GMnvG89qCPAoTP6LL7K9IGQ1Xq+Xz0oE2DCF+1/LB" />
       </audio>
@@ -39,7 +33,6 @@ function Book() {
           size="stretch"
           drawShadow={true}
           maxShadowOpacity={0.4}
-          // ❌ shadowOpacity={0.2}  ← remove this line
           mobileScrollSupport={true}
           showCover={true}
           usePortrait={true}
@@ -54,9 +47,22 @@ function Book() {
           style={{ margin: "0 auto" }}
           onFlip={handleFlip}
           flippingTime={800}
-          children={undefined}
           startZIndex={0}
-        ></HTMLFlipBook>
+        >
+          {/* Example Pages */}
+          <div className="page-content flex items-center justify-center text-2xl font-bold">
+            Page 1
+          </div>
+          <div className="page-content flex items-center justify-center text-2xl font-bold">
+            Page 2
+          </div>
+          <div className="page-content flex items-center justify-center text-2xl font-bold">
+            Page 3
+          </div>
+          <div className="page-content flex items-center justify-center text-2xl font-bold">
+            Page 4
+          </div>
+        </HTMLFlipBook>
 
         {/* Instructions */}
         <div className="text-center mt-6 text-gray-600">
