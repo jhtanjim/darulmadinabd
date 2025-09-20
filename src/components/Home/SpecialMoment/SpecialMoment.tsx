@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -42,9 +43,11 @@ const SpecialMoment = () => {
           {images.map((img, index) => (
             <SwiperSlide key={index}>
               <div className="rounded-2xl overflow-hidden shadow-lg">
-                <img
+                <Image
                   src={img}
                   alt={`Moment ${index + 1}`}
+                  width={400} // you can adjust width/height for better layout shift
+                  height={240}
                   className="w-full h-60 object-cover"
                 />
               </div>
@@ -58,8 +61,7 @@ const SpecialMoment = () => {
             href="/moments"
             className="text-white font-medium hover:underline inline-flex items-center gap-2"
           >
-            View All
-            <span>➡️</span>
+            View All <span>➡️</span>
           </a>
         </div>
       </div>

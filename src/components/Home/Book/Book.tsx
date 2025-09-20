@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 
@@ -30,110 +29,33 @@ function Book() {
       </audio>
 
       <div className="w-full max-w-4xl">
-        <HTMLFlipBook
-          width={500}
-          height={650}
-          minWidth={280}
-          maxWidth={800}
-          minHeight={400}
-          maxHeight={900}
-          size="stretch"
-          drawShadow={true}
-          maxShadowOpacity={0.4}
-          shadowOpacity={0.2}
-          mobileScrollSupport={true}
-          showCover={true}
-          usePortrait={true}
-          startPage={0}
-          autoSize={true}
-          clickEventForward={true}
-          useMouseEvents={true}
-          swipeDistance={30}
-          showPageCorners={true}
-          disableFlipByClick={false}
-          className="shadow-2xl mx-auto"
-          style={{
-            margin: "0 auto",
-          }}
-          onFlip={handleFlip}
-          flippingTime={800}
-        >
-          {/* Cover Page - Single centered image */}
-          <div className="page-cover">
-            <div className="w-full h-full relative overflow-hidden bg-white rounded-r-xl">
-              <Image
-                src="https://images.pexels.com/photos/2608179/pexels-photo-2608179.jpeg"
-                alt="Book Cover"
-                width={500} // or actual width
-                height={650} // or actual height
-                className="w-full h-full object-cover"
-                priority // instead of loading="eager"
-              />
+       <HTMLFlipBook
+  width={500}
+  height={650}
+  minWidth={280}
+  maxWidth={800}
+  minHeight={400}
+  maxHeight={900}
+  size="stretch"
+  drawShadow={true}
+  maxShadowOpacity={0.4}
+  // ❌ shadowOpacity={0.2}  ← remove this line
+  mobileScrollSupport={true}
+  showCover={true}
+  usePortrait={true}
+  startPage={0}
+  autoSize={true}
+  clickEventForward={true}
+  useMouseEvents={true}
+  swipeDistance={30}
+  showPageCorners={true}
+  disableFlipByClick={false}
+  className="shadow-2xl mx-auto"
+  style={{ margin: "0 auto" }}
+  onFlip={handleFlip}
+  flippingTime={800}
+>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-30"></div>
-            </div>
-          </div>
-
-          {/* First Content Page */}
-          <div className="page-content">
-            <div className="w-full h-full relative overflow-hidden bg-white">
-              <img
-                src="https://images.pexels.com/photos/11769687/pexels-photo-11769687.jpeg"
-                alt="First Page"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Second Content Page */}
-          <div className="page-content">
-            <div className="w-full h-full relative overflow-hidden bg-white">
-              <img
-                src="https://images.pexels.com/photos/18998695/pexels-photo-18998695.jpeg"
-                alt="Second Page"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Third Content Page */}
-          <div className="page-content">
-            <div className="w-full h-full relative overflow-hidden bg-white">
-              <img
-                src="https://images.pexels.com/photos/3128502/pexels-photo-3128502.jpeg"
-                alt="Third Page"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Fourth Content Page */}
-          <div className="page-content">
-            <div className="w-full h-full relative overflow-hidden bg-white">
-              <img
-                src="https://images.pexels.com/photos/1261728/pexels-photo-1261728.jpeg"
-                alt="Fourth Page"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Back Cover */}
-          <div className="page-cover">
-            <div className="w-full h-full relative overflow-hidden bg-gray-100 rounded-l-xl border-l border-gray-200">
-              <div className="flex flex-col items-center justify-center h-full p-8 text-center">
-                <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                  The End
-                </h2>
-                <p className="text-gray-600">Thank you for reading</p>
-              </div>
-            </div>
-          </div>
-        </HTMLFlipBook>
 
         {/* Instructions */}
         <div className="text-center mt-6 text-gray-600">
