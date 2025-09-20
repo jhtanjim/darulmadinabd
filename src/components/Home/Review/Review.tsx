@@ -1,6 +1,7 @@
 "use client";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useEffect, useState } from "react";
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
 
 const Review = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -69,9 +70,9 @@ const Review = () => {
     ));
   };
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
-  };
+  }, [reviews.length]);
 
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
@@ -81,7 +82,7 @@ const Review = () => {
   useEffect(() => {
     const interval = setInterval(nextSlide, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [nextSlide]);
 
   return (
     <div className="py-16 px-4 bg-gradient-to-br from-white via-green-50 to-teal-50">
@@ -131,14 +132,16 @@ const Review = () => {
 
                     {/* Review Text */}
                     <blockquote className="text-2xl md:text-3xl font-light leading-relaxed mb-8 italic">
-                      "{review.review}"
+                      &ldquo;{review.review}&rdquo;
                     </blockquote>
 
                     {/* User Info */}
                     <div className="flex items-center justify-center">
-                      <img
+                      <Image
                         src={review.image}
                         alt={review.name}
+                        width={64}
+                        height={64}
                         className="w-16 h-16 rounded-full object-cover border-3 mr-6"
                         style={{ borderColor: "#61ce70" }}
                       />
@@ -205,12 +208,14 @@ const Review = () => {
               >
                 <div className="flex mb-3">{renderStars(review.rating)}</div>
                 <p className="text-white text-sm mb-4 line-clamp-3">
-                  "{review.review}"
+                  &ldquo;{review.review}&rdquo;
                 </p>
                 <div className="flex items-center">
-                  <img
+                  <Image
                     src={review.image}
                     alt={review.name}
+                    width={40}
+                    height={40}
                     className="w-10 h-10 rounded-full object-cover mr-3"
                   />
                   <div>

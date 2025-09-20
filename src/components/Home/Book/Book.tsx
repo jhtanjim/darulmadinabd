@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 
@@ -60,12 +61,15 @@ function Book() {
           {/* Cover Page - Single centered image */}
           <div className="page-cover">
             <div className="w-full h-full relative overflow-hidden bg-white rounded-r-xl">
-              <img
+              <Image
                 src="https://images.pexels.com/photos/2608179/pexels-photo-2608179.jpeg"
                 alt="Book Cover"
+                width={500} // or actual width
+                height={650} // or actual height
                 className="w-full h-full object-cover"
-                loading="eager"
+                priority // instead of loading="eager"
               />
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-30"></div>
             </div>
           </div>
