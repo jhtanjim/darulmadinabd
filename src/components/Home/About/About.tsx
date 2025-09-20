@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const About = () => {
   return (
     <div className="min-h-screen bg-white flex items-center px-6 lg:px-20">
@@ -12,7 +14,7 @@ const About = () => {
               </span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-              Empowering minds, building futures, and creating tomorrow's
+              Empowering minds, building futures, and creating tomorrow&apos;s
               leaders through innovative education and dedicated teaching.
             </p>
           </div>
@@ -46,13 +48,13 @@ const About = () => {
               <div className="text-3xl font-bold" style={{ color: "#2e6d72" }}>
                 50+
               </div>
-              <div className="text-gray-200 text-sm">Teachers</div>
+              <div className="text-gray-600 text-sm">Teachers</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold" style={{ color: "#61ce70" }}>
                 25+
               </div>
-              <div className="text-gray-200 text-sm">Years</div>
+              <div className="text-gray-600 text-sm">Years</div>
             </div>
           </div>
         </div>
@@ -72,9 +74,11 @@ const About = () => {
 
             {/* Main image container */}
             <div className="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Students learning in classroom"
+                width={1000}
+                height={500}
                 className="w-full h-96 lg:h-[500px] object-cover"
               />
 
