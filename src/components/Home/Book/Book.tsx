@@ -29,33 +29,34 @@ function Book() {
       </audio>
 
       <div className="w-full max-w-4xl">
-       <HTMLFlipBook
-  width={500}
-  height={650}
-  minWidth={280}
-  maxWidth={800}
-  minHeight={400}
-  maxHeight={900}
-  size="stretch"
-  drawShadow={true}
-  maxShadowOpacity={0.4}
-  // ❌ shadowOpacity={0.2}  ← remove this line
-  mobileScrollSupport={true}
-  showCover={true}
-  usePortrait={true}
-  startPage={0}
-  autoSize={true}
-  clickEventForward={true}
-  useMouseEvents={true}
-  swipeDistance={30}
-  showPageCorners={true}
-  disableFlipByClick={false}
-  className="shadow-2xl mx-auto"
-  style={{ margin: "0 auto" }}
-  onFlip={handleFlip}
-  flippingTime={800}
->
-
+        <HTMLFlipBook
+          width={500}
+          height={650}
+          minWidth={280}
+          maxWidth={800}
+          minHeight={400}
+          maxHeight={900}
+          size="stretch"
+          drawShadow={true}
+          maxShadowOpacity={0.4}
+          // ❌ shadowOpacity={0.2}  ← remove this line
+          mobileScrollSupport={true}
+          showCover={true}
+          usePortrait={true}
+          startPage={0}
+          autoSize={true}
+          clickEventForward={true}
+          useMouseEvents={true}
+          swipeDistance={30}
+          showPageCorners={true}
+          disableFlipByClick={false}
+          className="shadow-2xl mx-auto"
+          style={{ margin: "0 auto" }}
+          onFlip={handleFlip}
+          flippingTime={800}
+          children={undefined}
+          startZIndex={0}
+        ></HTMLFlipBook>
 
         {/* Instructions */}
         <div className="text-center mt-6 text-gray-600">
