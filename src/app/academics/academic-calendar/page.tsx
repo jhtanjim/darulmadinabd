@@ -1,4 +1,3 @@
-"use client";
 import {
   Calendar,
   ChevronDown,
@@ -78,7 +77,7 @@ const AcademicCalendarPage: React.FC = () => {
     (doc) => doc.academicYear === selectedYear
   );
 
-  const handleViewPDF = (pdfUrl: string, title: string) => {
+  const handleViewPDF = (pdfUrl: string) => {
     // Open PDF in new tab
     window.open(pdfUrl, "_blank");
   };
@@ -113,24 +112,22 @@ const AcademicCalendarPage: React.FC = () => {
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#f8fffe" }}>
       {/* Header Section */}
-      <div className="pt-20">
-        <div
-          className="py-16 px-4 sm:px-6 lg:px-8"
-          style={{ backgroundColor: "#186d46" }}
-        >
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="flex justify-center items-center mb-6">
-              <Calendar className="w-12 h-12 text-white mr-4" />
-              <h1 className="text-4xl md:text-5xl font-bold text-white">
-                Academic Calendar
-              </h1>
-            </div>
-            <p className="text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-              Access and download official academic calendars for all semesters.
-              Stay informed about important dates, holidays, and examination
-              schedules.
-            </p>
+      <div
+        className="py-16 px-4 sm:px-6 lg:px-8"
+        style={{ backgroundColor: "#186d46" }}
+      >
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex justify-center items-center mb-6">
+            <Calendar className="w-12 h-12 text-white mr-4" />
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              Academic Calendar
+            </h1>
           </div>
+          <p className="text-xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+            Access and download official academic calendars for all semesters.
+            Stay informed about important dates, holidays, and examination
+            schedules.
+          </p>
         </div>
       </div>
 
@@ -147,10 +144,7 @@ const AcademicCalendarPage: React.FC = () => {
           <select
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
-            className="px-4 py-3 border-2 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 transition-all"
-            style={{
-              borderColor: "#61ce70",
-            }}
+            className="px-4 py-3 border-2 border-green-400 rounded-lg text-lg font-medium focus:outline-none focus:ring-2 focus:ring-green-700 focus:border-green-700 transition-all"
           >
             {academicYears.map((year) => (
               <option key={year} value={year}>
@@ -165,8 +159,7 @@ const AcademicCalendarPage: React.FC = () => {
           {filteredDocuments.map((doc) => (
             <div
               key={doc.id}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4"
-              style={{ borderLeftColor: "#186d46" }}
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border-l-4 border-l-green-700"
             >
               {/* Card Header */}
               <div className="p-6">
@@ -238,7 +231,7 @@ const AcademicCalendarPage: React.FC = () => {
                 {/* Action Buttons */}
                 <div className="flex gap-3 mt-6">
                   <button
-                    onClick={() => handleViewPDF(doc.pdfUrl, doc.title)}
+                    onClick={() => handleViewPDF(doc.pdfUrl)}
                     className="flex-1 flex items-center justify-center px-4 py-3 rounded-lg font-medium transition-all duration-200 hover:transform hover:scale-105"
                     style={{
                       backgroundColor: "#61ce70",
