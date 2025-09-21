@@ -1,5 +1,6 @@
 "use client";
 import { Award, Calendar, Eye, Star, Users } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 // Mock data for activities
@@ -210,7 +211,7 @@ const ActivitiesPage = () => {
                 </h1>
 
                 <p className="text-xl mb-8 text-white/90 leading-relaxed">
-                  We don't just provide education, we create memorable
+                  We don&apos;t just provide education, we create memorable
                   experiences through diverse activities, workshops, and
                   interactive programs that shape young minds!
                 </p>
@@ -315,11 +316,13 @@ const ActivitiesPage = () => {
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => openLightbox(item.image)}
               >
-                <div className="relative overflow-hidden">
-                  <img
+                <div className="relative overflow-hidden h-48">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -342,14 +345,6 @@ const ActivitiesPage = () => {
                   <p className="text-gray-600 text-sm leading-relaxed">
                     {item.description}
                   </p>
-
-                  {/* <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <button className="text-primary font-medium hover:text-accent transition-colors flex items-center group">
-                      View Image
-                      <Eye className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </button>
-                    <Heart className="w-5 h-5 text-gray-400 hover:text-red-500 cursor-pointer transition-colors" />
-                  </div> */}
                 </div>
               </div>
             ))}
@@ -372,15 +367,19 @@ const ActivitiesPage = () => {
           onClick={closeLightbox}
         >
           <div className="relative max-w-4xl max-h-full">
-            <img
-              src={selectedImage}
-              alt="Gallery Image"
-              className="max-w-full max-h-full object-contain rounded-lg"
-              onClick={(e) => e.stopPropagation()}
-            />
+            <div className="relative w-full h-full max-w-4xl max-h-[90vh]">
+              <Image
+                src={selectedImage}
+                alt="Gallery Image"
+                fill
+                className="object-contain rounded-lg"
+                sizes="90vw"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </div>
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 transition-colors"
+              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 transition-colors z-10"
             >
               ×
             </button>
