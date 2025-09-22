@@ -1,4 +1,4 @@
-  const campuses = [
+  export  const campuses = [
     {
       name: "Saidpur Campus",
       location: "Old Babu Para, Saidpur, Nilphamari",

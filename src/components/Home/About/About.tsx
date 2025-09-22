@@ -13,7 +13,7 @@ const About = () => {
             </h1>
 
             <p className="text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
-              Empowering minds, building futures, and creating tomorrow's
+              Empowering minds, building futures, and creating tomorrow&apos;s
               leaders through innovative education.
             </p>
 
