@@ -1,16 +1,15 @@
 "use client";
+
 import {
   Award,
   BookOpen,
   ChevronRight,
   Globe,
-  GraduationCap,
   Heart,
-  Lightbulb,
   Star,
   Target,
-  Users,
 } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 
 const About = () => {
@@ -69,27 +68,6 @@ const About = () => {
     },
   ];
 
-  const features = [
-    {
-      icon: <Lightbulb className="w-6 h-6" />,
-      title: "Innovative Learning",
-      desc: "Modern teaching methods with traditional values",
-      color: "#186d46",
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Community Focus",
-      desc: "Building strong community connections",
-      color: "#61ce70",
-    },
-    {
-      icon: <GraduationCap className="w-6 h-6" />,
-      title: "Academic Excellence",
-      desc: "High standards in education and character",
-      color: "#2E6D72",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Section */}
@@ -145,9 +123,11 @@ const About = () => {
           <div className="grid lg:grid-cols-2 gap-0">
             {/* Image Side */}
             <div className="bg-gray-50 p-8 flex items-center justify-center">
-              <img
+              <Image
                 src={sections[activeSection].image}
                 alt={sections[activeSection].title}
+                width={500}
+                height={256}
                 className="w-full max-w-sm h-64 object-contain rounded-lg"
               />
             </div>
@@ -183,38 +163,6 @@ const About = () => {
           </div>
         </div>
       </div>
-
-      {/* Features Grid */}
-      {/* <div className="max-w-6xl mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <h3 className="text-3xl font-bold text-gray-800 mb-4">
-            Why Choose Us
-          </h3>
-          <p className="text-xl text-gray-600">
-            Excellence in every aspect of education
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl shadow-md p-8 text-center hover:shadow-lg transition-shadow"
-            >
-              <div
-                className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-6 text-white"
-                style={{ backgroundColor: feature.color }}
-              >
-                {feature.icon}
-              </div>
-              <h4 className="text-xl font-bold text-gray-800 mb-3">
-                {feature.title}
-              </h4>
-              <p className="text-gray-600">{feature.desc}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
 
       {/* Call to Action */}
       <div className="bg-white border-t">

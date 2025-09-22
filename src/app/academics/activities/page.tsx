@@ -363,23 +363,22 @@ const ActivitiesPage = () => {
       {/* Lightbox Modal */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 bg-opacity-90 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
           onClick={closeLightbox}
         >
-          <div className="relative max-w-4xl max-h-full">
-            <div className="relative w-full h-full max-w-4xl max-h-[90vh]">
-              <Image
-                src={selectedImage}
-                alt="Gallery Image"
-                fill
-                className="object-contain rounded-lg"
-                sizes="90vw"
-                onClick={(e) => e.stopPropagation()}
-              />
-            </div>
+          <div className="relative max-w-4xl max-h-[90vh] w-full h-full flex items-center justify-center">
+            <Image
+              src={selectedImage}
+              alt="Gallery Image"
+              width={800}
+              height={600}
+              className="max-w-full max-h-full object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+              priority
+            />
             <button
               onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 transition-colors z-10"
+              className="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 transition-colors bg-black/50 rounded-full w-12 h-12 flex items-center justify-center"
             >
               ×
             </button>

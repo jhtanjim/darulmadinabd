@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Calendar,
   ChevronDown,
@@ -24,7 +25,6 @@ const AcademicCalendarPage: React.FC = () => {
   const [expandedCard, setExpandedCard] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState<string>("2024-2025");
 
-  // Sample calendar data - replace with your actual PDF URLs
   const calendarDocuments: CalendarDocument[] = [
     {
       id: "1",
@@ -79,15 +79,13 @@ const AcademicCalendarPage: React.FC = () => {
   );
 
   const handleViewPDF = (pdfUrl: string) => {
-    // Open PDF in new tab
     window.open(pdfUrl, "_blank");
   };
 
-  const handleDownloadPDF = (pdfUrl: string, title: string) => {
-    // Create download link
+  const handleDownloadPDF = (pdfUrl: string, fileTitle: string) => {
     const link = document.createElement("a");
     link.href = pdfUrl;
-    link.download = `${title.replace(/\s+/g, "-").toLowerCase()}.pdf`;
+    link.download = `${fileTitle.replace(/\s+/g, "-").toLowerCase()}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
