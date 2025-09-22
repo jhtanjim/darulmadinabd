@@ -114,7 +114,7 @@ const Navbar = ({ openNav }: Props) => {
           {/* Burger menu */}
           <HiBars3BottomRight
             onClick={openNav}
-            className="w-8 h-8 cursor-pointer text-white lg:hidden"
+            className="w-8 h-8 cursor-pointer text-black lg:hidden"
           />
         </div>
       </div>
