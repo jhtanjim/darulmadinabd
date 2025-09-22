@@ -1,6 +1,6 @@
 // src/types/react-simple-maps.d.ts
 declare module "react-simple-maps" {
-  import { Feature, Geometry } from "geojson";
+  import { Feature, GeoJsonProperties, Geometry } from "geojson";
     import * as React from "react";
 
   export interface ComposableMapProps {
@@ -18,12 +18,12 @@ declare module "react-simple-maps" {
 
   export interface GeographiesProps {
     geography: string | object;
-    children: (props: { geographies: Feature[] }) => React.ReactNode;
+    children: (props: { geographies: Feature<Geometry, GeoJsonProperties>[] }) => React.ReactNode;
     onError?: () => void;
   }
 
   export interface GeographyProps {
-    geography: Feature<Geometry, any>;
+    geography: Feature<Geometry, GeoJsonProperties>;
     style?: {
       default?: React.CSSProperties;
       hover?: React.CSSProperties;
@@ -32,7 +32,7 @@ declare module "react-simple-maps" {
     fill?: string;
     stroke?: string;
     strokeWidth?: number;
-    [key: string]: any;
+    [key: string]: unknown; // avoid `any`
   }
 
   export const ComposableMap: React.FC<ComposableMapProps>;

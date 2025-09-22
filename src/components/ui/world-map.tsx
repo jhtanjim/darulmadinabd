@@ -1,5 +1,6 @@
 "use client";
 
+import { Feature, GeoJsonProperties, Geometry } from "geojson"; // ✅ import types
 import { useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
@@ -71,16 +72,23 @@ const WorldMap = () => {
           className="w-full h-full"
         >
           <Geographies geography={geoUrl}>
-            {({ geographies }: { geographies: any[] }) =>
+            {({
+              geographies,
+            }: {
+              geographies: Feature<Geometry, GeoJsonProperties>[];
+            }) =>
               geographies.map((geo) => {
-                const countryName =
-                  geo.properties?.NAME || geo.properties?.name || "";
+                const props = geo.properties as {
+                  NAME?: string;
+                  name?: string;
+                };
+                const countryName = props?.NAME || props?.name || "";
                 const isHighlighted = isHighlightedCountry(countryName);
                 const displayName = getCountryDisplayName(countryName);
 
                 return (
                   <Geography
-                    key={geo.rsmKey}
+                    key={geo.id || (geo as any).rsmKey}
                     geography={geo}
                     onMouseEnter={() => setHoveredCountry(displayName)}
                     onMouseLeave={() => setHoveredCountry("")}
