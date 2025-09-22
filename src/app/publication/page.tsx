@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 
 const PublicationPage = () => {
@@ -122,14 +123,12 @@ const PublicationPage = () => {
             >
               {/* Book Image */}
               <div className="relative overflow-hidden bg-white p-4 h-80 flex items-center justify-center">
-                <img
+                <Image
                   src={book.image}
                   alt={book.title}
+                  width={200} // choose a suitable width
+                  height={280} // choose a suitable height
                   className="max-h-full max-w-full object-contain rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src =
-                      "/api/placeholder/200/280";
-                  }}
                 />
 
                 {/* Category Badge */}
