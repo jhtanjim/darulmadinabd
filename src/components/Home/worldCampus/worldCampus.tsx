@@ -42,5 +42,4 @@ const worldCampus = () => {
     </section>
   );
 };
-
 export default worldCampus;
