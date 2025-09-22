@@ -2,92 +2,67 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-white flex items-center px-6 lg:px-20">
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        {/* Left Content */}
-        <div className="space-y-8">
-          <div className="space-y-4">
-            <h1 className="text-5xl lg:text-6xl font-bold text-gray-800 leading-tight">
-              Welcome to
-              <span className="block" style={{ color: "#186d46" }}>
-                Excellence Academy
-              </span>
+    <div className="min-h-screen bg-white flex items-center pt-12 px-4 md:px-8 lg:px-20">
+      <div className="max-w-6xl mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-6 lg:space-y-8 text-center lg:text-left">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 leading-tight">
+              Welcome to{" "}
+              <span className="text-[#186d46]">Excellence Academy</span>
             </h1>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
-              Empowering minds, building futures, and creating tomorrow&apos;s
-              leaders through innovative education and dedicated teaching.
+
+            <p className="text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Empowering minds, building futures, and creating tomorrow's
+              leaders through innovative education.
             </p>
-          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              className="px-8 py-4 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity duration-300"
-              style={{ backgroundColor: "#186d46" }}
-            >
-              Explore Programs
-            </button>
-            <button
-              className="px-8 py-4 font-semibold rounded-lg border-2 hover:bg-gray-50 transition-colors duration-300"
-              style={{
-                color: "#2e6d72",
-                borderColor: "#2e6d72",
-              }}
-            >
-              Schedule Visit
-            </button>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <button className="px-6 py-3 bg-[#186d46] text-white font-medium rounded-lg hover:bg-[#2e6d72] transition-colors">
+                Explore Programs
+              </button>
+              <button className="px-6 py-3 text-[#2e6d72] border-2 border-[#2e6d72] font-medium rounded-lg hover:bg-[#2e6d72] hover:text-white transition-colors">
+                Schedule Visit
+              </button>
+            </div>
 
-          <div className="flex items-center space-x-8 pt-4">
-            <div className="text-center">
-              <div className="text-3xl font-bold" style={{ color: "#186d46" }}>
-                500+
+            <div className="grid grid-cols-3 gap-4 pt-6 max-w-sm mx-auto lg:mx-0">
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-[#186d46]">
+                  500+
+                </div>
+                <div className="text-gray-600 text-sm">Students</div>
               </div>
-              <div className="text-gray-600 text-sm">Students</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold" style={{ color: "#2e6d72" }}>
-                50+
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-[#2e6d72]">
+                  50+
+                </div>
+                <div className="text-gray-600 text-sm">Teachers</div>
               </div>
-              <div className="text-gray-600 text-sm">Teachers</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold" style={{ color: "#61ce70" }}>
-                25+
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-[#61ce70]">
+                  25+
+                </div>
+                <div className="text-gray-600 text-sm">Years</div>
               </div>
-              <div className="text-gray-600 text-sm">Years</div>
             </div>
           </div>
-        </div>
 
-        {/* Right Image */}
-        <div className="flex justify-center lg:justify-end">
-          <div className="relative">
-            {/* Decorative background shapes */}
-            <div
-              className="absolute -top-4 -right-4 w-24 h-24 rounded-full opacity-20"
-              style={{ backgroundColor: "#61ce70" }}
-            ></div>
-            <div
-              className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full opacity-30"
-              style={{ backgroundColor: "#2e6d72" }}
-            ></div>
+          {/* Right Image */}
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-lg">
+              <div className="bg-gray-100 rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="https://darulmadinah.edu.in/wp-content/uploads/2022/09/2_20220922_011008_0001-300x300.png"
+                  alt="Students learning in classroom"
+                  width={600}
+                  height={400}
+                  className="w-full h-64 md:h-80 lg:h-96 object-cover"
+                />
 
-            {/* Main image container */}
-            <div className="relative bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1523050854058-8df90110c9d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Students learning in classroom"
-                width={1000}
-                height={500}
-                className="w-full h-96 lg:h-[500px] object-cover"
-              />
-
-              {/* Floating achievement badge */}
-              <div
-                className="absolute top-6 left-6 px-4 py-2 text-white font-semibold rounded-full shadow-lg"
-                style={{ backgroundColor: "#186d46" }}
-              >
-                ⭐ Award Winning School
+                <div className="absolute top-4 left-4 px-3 py-2 bg-[#186d46] text-white text-sm font-medium rounded-full">
+                  ⭐ Award Winning
+                </div>
               </div>
             </div>
           </div>
