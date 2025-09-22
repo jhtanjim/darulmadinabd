@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import bdPNG from "../../../assets/bangladesh.svg";
 
@@ -56,6 +57,11 @@ const CampusPresence: React.FC = () => {
           </div>
         </div>
       </div>
+      <Link href="/campuses">
+        <button className="mt-8 px-6 py-3 bg-[#186d46] text-white font-medium text-lg  flex mx-auto rounded-lg hover:bg-[#2e6d72] transition-colors">
+          View All Campuses
+        </button>
+      </Link>
     </div>
   );
 };

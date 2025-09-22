@@ -4,6 +4,7 @@ import Book from "@/components/Home/Book/Book";
 import CampusLocation from "@/components/Home/CampusLocation/CampusLocation";
 import Review from "@/components/Home/Review/Review";
 import SpecialMoment from "@/components/Home/SpecialMoment/SpecialMoment";
+import WorldCampus from "@/components/Home/worldCampus/worldCampus";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Banner />
       <About />
       <CampusLocation />
+      <WorldCampus />
       <SpecialMoment />
       <Book />
       <Review />
