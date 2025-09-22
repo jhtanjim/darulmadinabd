@@ -27,6 +27,11 @@ const highlightedCountries = {
   KEN: "Kenya",
 };
 
+// Extend the Feature type to include rsmKey
+interface ExtendedFeature extends Feature<Geometry, GeoJsonProperties> {
+  rsmKey?: string;
+}
+
 const WorldMap = () => {
   const [hoveredCountry, setHoveredCountry] = useState<string>("");
 
@@ -72,11 +77,7 @@ const WorldMap = () => {
           className="w-full h-full"
         >
           <Geographies geography={geoUrl}>
-            {({
-              geographies,
-            }: {
-              geographies: Feature<Geometry, GeoJsonProperties>[];
-            }) =>
+            {({ geographies }: { geographies: ExtendedFeature[] }) =>
               geographies.map((geo) => {
                 const props = geo.properties as {
                   NAME?: string;
@@ -88,7 +89,7 @@ const WorldMap = () => {
 
                 return (
                   <Geography
-                    key={geo.id || (geo as any).rsmKey}
+                    key={geo.id || geo.rsmKey || `country-${countryName}`}
                     geography={geo}
                     onMouseEnter={() => setHoveredCountry(displayName)}
                     onMouseLeave={() => setHoveredCountry("")}
