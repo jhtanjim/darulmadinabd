@@ -1,5 +1,6 @@
 import { campuses } from "@/data/campusData";
 import { ExternalLink, Mail, MapPin, Phone } from "lucide-react";
+import Image from "next/image";
 
 const Page = () => {
   return (
@@ -25,15 +26,19 @@ const Page = () => {
           {campuses.map((campus) => (
             <div
               key={campus.name}
-              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-green-100"
+              className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-green-100 relative"
             >
               {/* Campus Image */}
               {campus.image && (
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={campus.image}
                     alt={campus.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-300"
+                    sizes="(max-width: 768px) 100vw, 
+                           (max-width: 1200px) 50vw, 
+                           25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                 </div>
@@ -102,26 +107,6 @@ const Page = () => {
               <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-green-200 to-transparent opacity-50 rounded-bl-full"></div>
             </div>
           ))}
-        </div>
-
-        {/* Additional Info Section */}
-        <div className="mt-16 text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-green-100">
-            <h2 className="text-3xl font-bold text-green-800 mb-4">
-              Visit Our Campuses
-            </h2>
-            <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-              Each of our campuses offers a unique learning environment with
-              modern facilities, dedicated faculty, and vibrant student
-              communities. We encourage you to visit and experience what makes
-              each location special.
-            </p>
-            <div className="mt-6 flex justify-center space-x-4">
-              <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              <div className="w-3 h-3 bg-teal-600 rounded-full"></div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
