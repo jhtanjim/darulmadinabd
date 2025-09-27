@@ -129,10 +129,6 @@ const WorldMap = () => {
             Our Campus Locations
           </span>
         </div>
-        <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-md border border-slate-200">
-          <div className="w-4 h-4 bg-slate-300 rounded-full"></div>
-          <span className="font-medium text-slate-600">Other Countries</span>
-        </div>
       </div>
 
       {/* Country Labels */}
@@ -156,9 +152,6 @@ const WorldMap = () => {
             </span>
           ))}
         </div>
-        <p className="text-sm md:text-base text-[#61ce70] mt-3 font-medium">
-          🌍 Our Global Campus Network
-        </p>
       </div>
     </div>
   );

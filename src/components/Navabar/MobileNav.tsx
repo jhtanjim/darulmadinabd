@@ -25,7 +25,7 @@ const MobileNav = ({ showNav, closeNav }: Props) => {
 
       {/* Sidebar */}
       <div
-        className={`text-white ${navOpen} fixed top-0 left-0 h-full transform transition-all duration-500 delay-300 w-[85%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] bg-indigo-900 z-[100006] flex flex-col`}
+        className={`text-white ${navOpen} fixed top-0 left-0 h-full transform transition-all duration-500 delay-300 w-[85%] sm:w-[70%] md:w-[60%] lg:w-[50%] xl:w-[40%] bg-accent z-[100006] flex flex-col`}
       >
         {/* Navigation Links */}
         <div className="flex-1 overflow-y-auto py-6 sm:py-8 px-4 sm:px-6 md:px-8 space-y-4 sm:space-y-6">
