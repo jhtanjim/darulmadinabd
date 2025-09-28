@@ -1,6 +1,6 @@
 "use client";
 
-import { Feature, GeoJsonProperties, Geometry } from "geojson"; // ✅ import types
+import { Feature, GeoJsonProperties, Geometry } from "geojson";
 import { useState } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
@@ -25,6 +25,9 @@ const highlightedCountries = {
   NPL: "Nepal",
   Kenya: "Kenya",
   KEN: "Kenya",
+  Australia: "Australia",
+  AUS: "Australia",
+  AU: "Australia",
 };
 
 // Extend the Feature type to include rsmKey
@@ -65,15 +68,15 @@ const WorldMap = () => {
         )}
       </div>
 
-      {/* Map Container */}
-      <div className="w-full h-64 sm:h-80 md:h-96 lg:h-[28rem] bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+      {/* Map Container - Increased height for better world view */}
+      <div className="w-full h-80 sm:h-96 md:h-[30rem] lg:h-[35rem] xl:h-[40rem] bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl shadow-xl overflow-hidden border border-slate-200">
         <ComposableMap
           projectionConfig={{
-            scale: 120,
-            center: [0, 20],
+            scale: 140, // Slightly increased scale for better visibility
+            center: [10, 0], // Centered to show more of the world
           }}
-          width={800}
-          height={400}
+          width={1000} // Increased width for better aspect ratio
+          height={500} // Increased height for better aspect ratio
           className="w-full h-full"
         >
           <Geographies geography={geoUrl}>
@@ -98,7 +101,7 @@ const WorldMap = () => {
                     strokeWidth={isHighlighted ? 1.5 : 0.5}
                     style={{
                       default: {
-                        outline: "none",
+                        outline: " none",
                         fill: isHighlighted ? "#186d46" : "#e2e8f0",
                         cursor: "pointer",
                       },
@@ -131,7 +134,7 @@ const WorldMap = () => {
         </div>
       </div>
 
-      {/* Country Labels */}
+      {/* Country Labels - Updated to include Australia */}
       <div className="mt-8 text-center bg-gradient-to-r from-[#186d46] via-[#2e6d72] to-[#186d46] text-white py-6 px-4 rounded-2xl shadow-lg">
         <div className="flex flex-wrap justify-center items-center gap-2 md:gap-4 text-sm md:text-base lg:text-lg font-bold">
           {[
@@ -139,6 +142,7 @@ const WorldMap = () => {
             "UNITED KINGDOM",
             "USA",
             "BANGLADESH",
+            "AUSTRALIA",
             "NEPAL",
             "KENYA",
           ].map((country, index) => (
@@ -146,7 +150,7 @@ const WorldMap = () => {
               <span className="hover:text-[#61ce70] transition-colors duration-300 cursor-default">
                 {country}
               </span>
-              {index < 5 && (
+              {index < 6 && (
                 <span className="mx-2 text-[#61ce70] font-normal">|</span>
               )}
             </span>
