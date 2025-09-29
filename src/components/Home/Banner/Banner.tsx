@@ -1,42 +1,40 @@
 "use client";
 import {
-  BookOpen,
   Building2,
-  Calendar,
   ChevronLeft,
   ChevronRight,
-  FileText,
   GraduationCap,
+  HeartHandshake,
+  Users2,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Hero slider images
   const slides = [
     {
       id: 1,
       image:
         "https://darulmadinah.edu.in/wp-content/uploads/2025/09/0Website-Banner-scaled.png",
-      alt: "Dar-ul-Madinah English School - Campus View",
+      alt: "Campus View",
     },
     {
       id: 2,
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuXHH2H7QagmhSOHBBOVgYcd_E6HpyuyWfC4ivN8nrUF-citcTfNajlxS-EfBuxc85sag&usqp=CAU",
-      alt: "Dar-ul-Madinah English School - Students Learning",
+      alt: "Students Learning",
     },
     {
       id: 3,
       image:
         "https://darulmadinah.edu.in/wp-content/uploads/2025/09/0Website-Banner-scaled.png",
-      alt: "Dar-ul-Madinah English School - Modern Facilities",
+      alt: "Modern Facilities",
     },
   ];
-  // Auto-play functionality
+
   useEffect(() => {
     if (isAutoPlaying) {
       const interval = setInterval(() => {
@@ -46,21 +44,15 @@ const HeroCarousel = () => {
     }
   }, [currentSlide, isAutoPlaying, slides.length]);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+  const nextSlide = () => setCurrentSlide((p) => (p + 1) % slides.length);
+  const prevSlide = () =>
+    setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
+  const goToSlide = (index: number) => setCurrentSlide(index);
 
   return (
     <div className="relative w-full bg-slate-50">
-      {/* Main Carousel Container */}
+      {/* Carousel */}
+      {/* ... your carousel code unchanged ... */}
       <div
         className="relative overflow-hidden bg-white shadow-xl"
         onMouseEnter={() => setIsAutoPlaying(false)}
@@ -133,75 +125,33 @@ const HeroCarousel = () => {
           />
         </div>
       </div>
-
-      {/* School Features Section */}
+      {/* Features Section */}
       <div className="bg-gradient-to-r from-emerald-600 to-teal-700 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 sm:gap-6">
-            {/* Admissions */}
-            <div className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
-              <div className="flex-shrink-0">
-                <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-300" />
-              </div>
-              <div className="min-w-0 flex-1">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            {/* Campuses */}
+            <Link
+              href="/campuses"
+              className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+            >
+              <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-green-300" />
+              <div>
                 <h3 className="font-semibold text-sm sm:text-lg leading-tight">
-                  Admissions Open
+                  Campuses
                 </h3>
                 <p className="text-xs sm:text-sm text-emerald-100">
-                  2025-26 Session
+                  Our Locations
                 </p>
               </div>
-            </div>
-
-            {/* Quality Education */}
-            <div className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
-              <div className="flex-shrink-0">
-                <BookOpen className="w-6 h-6 sm:w-8 sm:h-8 text-blue-300" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-semibold text-sm sm:text-lg leading-tight">
-                  Quality Islamic
-                </h3>
-                <p className="text-xs sm:text-sm text-emerald-100">Education</p>
-              </div>
-            </div>
-
-            {/* Modern Environment */}
-            <div className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
-              <div className="flex-shrink-0">
-                <Building2 className="w-6 h-6 sm:w-8 sm:h-8 text-green-300" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-semibold text-sm sm:text-lg leading-tight">
-                  Modern Learning
-                </h3>
-                <p className="text-xs sm:text-sm text-emerald-100">
-                  Environment
-                </p>
-              </div>
-            </div>
-
-            {/* Publications */}
-            <div className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300">
-              <div className="flex-shrink-0">
-                <FileText className="w-6 h-6 sm:w-8 sm:h-8 text-orange-300" />
-              </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="font-semibold text-sm sm:text-lg leading-tight">
-                  Publications
-                </h3>
-                <p className="text-xs sm:text-sm text-emerald-100">
-                  & Resources
-                </p>
-              </div>
-            </div>
+            </Link>
 
             {/* Academics */}
-            <div className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300 sm:col-span-2 lg:col-span-1 xl:col-span-1">
-              <div className="flex-shrink-0">
-                <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-purple-300" />
-              </div>
-              <div className="min-w-0 flex-1">
+            <Link
+              href="/academics"
+              className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+            >
+              <GraduationCap className="w-6 h-6 sm:w-8 sm:h-8 text-purple-300" />
+              <div>
                 <h3 className="font-semibold text-sm sm:text-lg leading-tight">
                   Academics
                 </h3>
@@ -209,12 +159,42 @@ const HeroCarousel = () => {
                   Excellence
                 </p>
               </div>
-            </div>
+            </Link>
+
+            {/* Activities */}
+            <Link
+              href="/activities"
+              className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+            >
+              <Users2 className="w-6 h-6 sm:w-8 sm:h-8 text-blue-300" />
+              <div>
+                <h3 className="font-semibold text-sm sm:text-lg leading-tight">
+                  Activities
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-100">
+                  Clubs & Events
+                </p>
+              </div>
+            </Link>
+
+            {/* Tarbiyah */}
+            <Link
+              href="/tarbiyah"
+              className="flex items-center space-x-3 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-sm hover:bg-white/20 transition-all duration-300"
+            >
+              <HeartHandshake className="w-6 h-6 sm:w-8 sm:h-8 text-orange-300" />
+              <div>
+                <h3 className="font-semibold text-sm sm:text-lg leading-tight">
+                  Tarbiyah
+                </h3>
+                <p className="text-xs sm:text-sm text-emerald-100">
+                  Character Building
+                </p>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
-
-      {/* About Section Preview */}
     </div>
   );
 };
