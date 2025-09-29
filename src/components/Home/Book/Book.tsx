@@ -1,6 +1,10 @@
 "use client";
 import { useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
+import page1 from "../../../assets/Images/activities/activities (1).jpg";
+import page2 from "../../../assets/Images/activities/activities (2).jpg";
+import page3 from "../../../assets/Images/activities/activities (3).jpg";
+import page4 from "../../../assets/Images/activities/activities (4).jpg";
 
 function Book() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -19,23 +23,22 @@ function Book() {
       {/* Page flip sound */}
       <audio ref={audioRef} preload="auto">
         <source src="/page-flip.mp3" type="audio/mpeg" />
-        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+D2yHkpBSuF0/LQfC4GMnvG89qCPAoTP6LL7K9IGQ1Xq+Xz0oE2DCF+1/LB" />
       </audio>
 
       <div className="w-full max-w-4xl">
         <HTMLFlipBook
-          width={500}
-          height={650}
-          minWidth={280}
-          maxWidth={800}
-          minHeight={400}
-          maxHeight={900}
+          width={800} // wider
+          height={500} // shorter
           size="stretch"
+          minWidth={400}
+          maxWidth={1200}
+          minHeight={250}
+          maxHeight={700}
           drawShadow={true}
           maxShadowOpacity={0.4}
           mobileScrollSupport={true}
           showCover={true}
-          usePortrait={true}
+          usePortrait={false} // 👈 important: spread/landscape mode
           startPage={0}
           autoSize={true}
           clickEventForward={true}
@@ -49,18 +52,34 @@ function Book() {
           flippingTime={800}
           startZIndex={0}
         >
-          {/* Example Pages */}
-          <div className="page-content flex items-center justify-center text-2xl font-bold">
-            Page 1
+          {/* Pages with images */}
+          <div className="page-content">
+            <img
+              src={page1.src}
+              alt="Page 1"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="page-content flex items-center justify-center text-2xl font-bold">
-            Page 2
+          <div className="page-content">
+            <img
+              src={page2.src}
+              alt="Page 2"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="page-content flex items-center justify-center text-2xl font-bold">
-            Page 3
+          <div className="page-content">
+            <img
+              src={page3.src}
+              alt="Page 3"
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="page-content flex items-center justify-center text-2xl font-bold">
-            Page 4
+          <div className="page-content">
+            <img
+              src={page4.src}
+              alt="Page 4"
+              className="w-full h-full object-cover"
+            />
           </div>
         </HTMLFlipBook>
 
