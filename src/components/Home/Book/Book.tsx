@@ -1,6 +1,10 @@
 "use client";
+
+import Image from "next/image";
 import { useRef } from "react";
 import HTMLFlipBook from "react-pageflip";
+
+// Import images with Next.js
 import page1 from "../../../assets/Images/activities/activities (1).jpg";
 import page2 from "../../../assets/Images/activities/activities (2).jpg";
 import page3 from "../../../assets/Images/activities/activities (3).jpg";
@@ -9,7 +13,7 @@ import page4 from "../../../assets/Images/activities/activities (4).jpg";
 function Book() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  const handleFlip = () => {
+  const handleFlip: HTMLFlipBookProps["onFlip"] = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
       audioRef.current.play().catch(() => {
@@ -25,62 +29,44 @@ function Book() {
         <source src="/page-flip.mp3" type="audio/mpeg" />
       </audio>
 
-      <div className="w-full max-w-4xl">
+      <div className="w-full max-w-6xl">
         <HTMLFlipBook
-          width={800} // wider
-          height={500} // shorter
+          width={500}
+          height={350}
           size="stretch"
-          minWidth={400}
-          maxWidth={1200}
-          minHeight={250}
-          maxHeight={700}
+          minWidth={250}
+          maxWidth={1000}
+          minHeight={200}
+          maxHeight={650}
           drawShadow={true}
           maxShadowOpacity={0.4}
           mobileScrollSupport={true}
           showCover={true}
-          usePortrait={false} // 👈 important: spread/landscape mode
-          startPage={0}
+          usePortrait={true}
           autoSize={true}
           clickEventForward={true}
           useMouseEvents={true}
           swipeDistance={30}
           showPageCorners={true}
           disableFlipByClick={false}
-          className="shadow-2xl mx-auto"
+          className="shadow-2xl mx-auto w-full"
           style={{ margin: "0 auto" }}
           onFlip={handleFlip}
           flippingTime={800}
           startZIndex={0}
+          startPage={0}
         >
-          {/* Pages with images */}
-          <div className="page-content">
-            <img
-              src={page1.src}
-              alt="Page 1"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="page-content">
-            <img
-              src={page2.src}
-              alt="Page 2"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="page-content">
-            <img
-              src={page3.src}
-              alt="Page 3"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="page-content">
-            <img
-              src={page4.src}
-              alt="Page 4"
-              className="w-full h-full object-cover"
-            />
-          </div>
+          {/* Pages with Next.js Image */}
+          {[page1, page2, page3, page4].map((page, i) => (
+            <div key={i} className="page-content">
+              <Image
+                src={page}
+                alt={`Page ${i + 1}`}
+                className="w-full h-full object-cover"
+                priority
+              />
+            </div>
+          ))}
         </HTMLFlipBook>
 
         {/* Instructions */}
@@ -105,19 +91,21 @@ function Book() {
 
         .stf__parent {
           margin: 0 auto !important;
+          width: 100% !important;
+          height: auto !important;
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .stf__parent {
-            width: 90vw !important;
-            max-width: 350px !important;
+            width: 95vw !important;
+            max-width: 500px !important;
           }
         }
 
         @media (max-width: 480px) {
           .stf__parent {
-            width: 95vw !important;
-            max-width: 300px !important;
+            width: 100vw !important;
+            max-width: 350px !important;
           }
         }
       `}</style>

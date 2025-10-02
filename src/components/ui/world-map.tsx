@@ -71,12 +71,13 @@ const WorldMap = () => {
       {/* Map Container - Increased height for better world view */}
       <div className="w-full h-80 sm:h-96 md:h-[30rem] lg:h-[35rem] xl:h-[40rem] bg-gradient-to-br from-slate-50 to-slate-100 rounded-2xl shadow-xl overflow-hidden border border-slate-200">
         <ComposableMap
+          projection="geoEqualEarth"
           projectionConfig={{
-            scale: 140, // Slightly increased scale for better visibility
-            center: [10, 0], // Centered to show more of the world
+            scale: 160,
+            center: [0, 10],
           }}
-          width={1000} // Increased width for better aspect ratio
-          height={500} // Increased height for better aspect ratio
+          width={800}
+          height={380}
           className="w-full h-full"
         >
           <Geographies geography={geoUrl}>
@@ -101,7 +102,7 @@ const WorldMap = () => {
                     strokeWidth={isHighlighted ? 1.5 : 0.5}
                     style={{
                       default: {
-                        outline: " none",
+                        outline: "none",
                         fill: isHighlighted ? "#186d46" : "#e2e8f0",
                         cursor: "pointer",
                       },

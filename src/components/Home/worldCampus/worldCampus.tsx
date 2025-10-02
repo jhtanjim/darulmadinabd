@@ -16,22 +16,15 @@ const logos = [logo1, logo2, logo3, logo4, logo5, logo6];
 const worldCampus = () => {
   return (
     <section className="py-8 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-xl font-semibold mb-4">Our Campuses</h2>
-
-        <Marquee
-          pauseOnHover
-          speed={40}
-          gradient={false} // disables fade edges
-          className="space-x-8"
-        >
-          {logos.map((logo, idx) => (
-            <div key={idx} className="flex items-center justify-center px-8">
+      <div className="container mx-auto px-4">
+        <Marquee pauseOnHover speed={40} gradient={false}>
+          {[...logos, ...logos].map((logo, idx) => (
+            <div key={idx} className="flex items-center justify-center px-6">
               <Image
                 src={logo}
                 alt={`Campus logo ${idx + 1}`}
-                width={140}
-                height={80}
+                width={120}
+                height={60}
                 className="object-contain"
               />
             </div>
