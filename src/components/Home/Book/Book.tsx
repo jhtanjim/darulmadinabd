@@ -9,7 +9,6 @@ import page1 from "../../../assets/Images/activities/activities (1).jpg";
 import page2 from "../../../assets/Images/activities/activities (2).jpg";
 import page3 from "../../../assets/Images/activities/activities (3).jpg";
 import page4 from "../../../assets/Images/activities/activities (4).jpg";
-
 function Book() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
@@ -49,7 +48,7 @@ function Book() {
           swipeDistance={30}
           showPageCorners={true}
           disableFlipByClick={false}
-          className="shadow-2xl mx-auto w-full"
+          className=" mx-auto w-full"
           style={{ margin: "0 auto" }}
           onFlip={handleFlip}
           flippingTime={800}
