@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import HTMLFlipBook from "react-pageflip";
+import HTMLFlipBook, { HTMLFlipBookProps } from "react-pageflip";
 
 // Import images with Next.js
 import page1 from "../../../assets/Images/activities/activities (1).jpg";
