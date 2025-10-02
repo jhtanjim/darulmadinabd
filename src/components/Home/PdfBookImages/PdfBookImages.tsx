@@ -29,20 +29,16 @@ function PdfBookImages() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
   const [pdfLoaded, setPdfLoaded] = useState(false);
-  const [currentPage, setCurrentPage] = useState(0);
+  //   const [currentPage, setCurrentPage] = useState(0);
   const { width: screenWidth, height: screenHeight } = useWindowSize();
 
-  const handleFlip: HTMLFlipBookProps["onFlip"] = (e) => {
-    setCurrentPage(e.data);
+  const handleFlip: HTMLFlipBookProps["onFlip"] = () => {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 2.3;
-      const playPromise = audioRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.log("Audio play prevented:", error);
-        });
-      }
+      audioRef.current.play().catch((error) => {
+        console.log("Audio play prevented");
+      });
     }
   };
 
