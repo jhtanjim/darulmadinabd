@@ -25,12 +25,20 @@ function useWindowSize() {
 }
 
 function PdfBookImages() {
+  const [isMounted, setIsMounted] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
   const [pdfLoaded, setPdfLoaded] = useState(false);
-  //   const [currentPage, setCurrentPage] = useState(0);
   const { width: screenWidth, height: screenHeight } = useWindowSize();
 
+  // Only render on client side
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // or a loading skeleton
+  }
   const handleFlip: HTMLFlipBookProps["onFlip"] = () => {
     if (audioRef.current) {
       audioRef.current.pause();
