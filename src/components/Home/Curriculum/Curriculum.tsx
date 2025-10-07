@@ -10,10 +10,10 @@ import {
 
 const CurriculumSection = () => {
   const stats = [
-    { id: 1, icon: Users, number: "16,000+", label: "Students" },
-    { id: 2, icon: Calendar, number: "12+", label: "Years" },
-    { id: 3, icon: Building, number: "45+", label: "Campus" },
-    { id: 4, icon: UserCheck, number: "1,200+", label: "Staff" },
+    { id: 1, icon: Users, number: "1300+", label: "Students" },
+    { id: 2, icon: Calendar, number: "5+", label: "Years" },
+    { id: 3, icon: Building, number: "11+", label: "Campus" },
+    { id: 4, icon: UserCheck, number: "150+", label: "Staff" },
   ];
 
   return (

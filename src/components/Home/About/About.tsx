@@ -11,6 +11,10 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import image4 from "../../../../src/assets/Images/activities/Ashura/ashura (84).jpg";
+import image1 from "../../../../src/assets/Images/activities/Flower Activity/floweractivities (5).jpg";
+import image2 from "../../../../src/assets/Images/activities/Fruit day/fruitday (218).jpg";
+import image3 from "../../../../src/assets/Images/activities/Hajj activity/hajjactivity (13).jpg";
 
 const About = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -23,35 +27,31 @@ const About = () => {
   const aboutImages = [
     {
       id: 1,
-      image:
-        "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&h=600&fit=crop",
-      alt: "Dar-ul-Madinah English School - Students in Learning Environment",
-      badge: "🏆 Award Winning",
-      title: "Excellence in Education",
+      image: image1,
+      alt: "Dar-ul-Madinah English School - Flower Activity",
+      badge: "🌸 Flower Activity",
+      title: "Creativity in Bloom",
     },
     {
       id: 2,
-      image:
-        "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&h=600&fit=crop",
-      alt: "Dar-ul-Madinah English School - Modern Classroom",
-      badge: "📚 Quality Education",
-      title: "Modern Learning Spaces",
+      image: image2,
+      alt: "Dar-ul-Madinah English School - Fruit Day Celebration",
+      badge: "🍎 Fruit Day",
+      title: "Healthy Habits & Fun Learning",
     },
     {
       id: 3,
-      image:
-        "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop",
-      alt: "Dar-ul-Madinah English School - Campus Facilities",
-      badge: "🌟 Modern Campus",
-      title: "World-Class Facilities",
+      image: image3,
+      alt: "Dar-ul-Madinah English School - Hajj Activity",
+      badge: "🕋 Hajj Activity",
+      title: "Spiritual Learning & Awareness",
     },
     {
       id: 4,
-      image:
-        "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&h=600&fit=crop",
-      alt: "Dar-ul-Madinah English School - Students Activities",
-      badge: "🎯 Excellence Focus",
-      title: "Holistic Development",
+      image: image4,
+      alt: "Dar-ul-Madinah English School - Ashura Program",
+      badge: "🎯 Ashura Program",
+      title: "Faith, Reflection & Values",
     },
   ];
 
@@ -169,7 +169,7 @@ const About = () => {
             </div>
           </div>
 
-          {/* Right Image Slider */}
+          {/* Right Image Slider - FIXED */}
           <div
             className={`flex justify-center lg:justify-end order-1 lg:order-2 transition-all duration-1000 delay-300 ${
               isVisible
@@ -186,16 +186,17 @@ const About = () => {
                 onTouchMove={onTouchMove}
                 onTouchEnd={onTouchEnd}
               >
-                <div
-                  className="flex transition-transform duration-700 ease-in-out rounded-xl sm:rounded-2xl overflow-hidden"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
-                  {aboutImages.map((image, index) => (
-                    <div
-                      key={image.id}
-                      className="w-full flex-shrink-0 relative"
-                    >
-                      <div className="relative h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px]">
+                {/* FIXED: Height set on outer container */}
+                <div className="relative h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px] rounded-xl sm:rounded-2xl overflow-hidden">
+                  <div
+                    className="flex h-full transition-transform duration-700 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {aboutImages.map((image, index) => (
+                      <div
+                        key={image.id}
+                        className="min-w-full h-full flex-shrink-0 relative"
+                      >
                         <Image
                           src={image.image}
                           alt={image.alt}
@@ -204,20 +205,23 @@ const About = () => {
                           priority={index === 0}
                         />
 
-                        <div className="absolute top-2 sm:top-4 lg:top-6 left-2 sm:left-4 lg:left-6 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 bg-white/95 backdrop-blur-sm text-gray-800 text-xs sm:text-sm font-semibold rounded-full shadow-lg border border-white/20">
+                        {/* Overlay gradient */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+
+                        {/* Badge */}
+                        <div className="absolute top-3 sm:top-4 left-3 sm:left-4 bg-white/95 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold text-gray-800 shadow-lg">
                           {image.badge}
                         </div>
 
-                        <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-2 sm:left-4 lg:left-6 right-2 sm:right-4 lg:right-6">
-                          <h3 className="text-white text-sm sm:text-base lg:text-lg font-bold drop-shadow-lg">
+                        {/* Title */}
+                        <div className="absolute bottom-16 sm:bottom-20 left-3 sm:left-4 right-3 sm:right-4">
+                          <h3 className="text-white text-lg sm:text-xl lg:text-2xl font-bold drop-shadow-lg">
                             {image.title}
                           </h3>
                         </div>
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
 
                 {/* Nav Arrows */}
@@ -239,7 +243,7 @@ const About = () => {
                 {/* Auto-play Control */}
                 <button
                   onClick={toggleAutoplay}
-                  className="absolute top-2 sm:top-3 lg:top-4 right-2 sm:right-3 lg:right-4 bg-white/95 hover:bg-white text-gray-800 p-1.5 sm:p-2 rounded-full transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300"
+                  className="absolute top-2 sm:top-3 lg:top-4 right-2 sm:right-3 lg:right-4 bg-white/95 hover:bg-white text-gray-800 p-1.5 sm:p-2 rounded-full transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-emerald-300 z-10"
                   aria-label={
                     isAutoPlaying ? "Pause slideshow" : "Play slideshow"
                   }
@@ -252,7 +256,7 @@ const About = () => {
                 </button>
 
                 {/* Slide Indicators */}
-                <div className="absolute bottom-3 sm:bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3">
+                <div className="absolute bottom-3 sm:bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3 z-10">
                   {aboutImages.map((_, index) => (
                     <button
                       key={index}
