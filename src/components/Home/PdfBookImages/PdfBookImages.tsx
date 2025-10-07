@@ -36,7 +36,7 @@ function PdfBookImages() {
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 2.3;
-      audioRef.current.play().catch((error) => {
+      audioRef.current.play().catch(() => {
         console.log("Audio play prevented");
       });
     }

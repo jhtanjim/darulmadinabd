@@ -9,6 +9,7 @@ import {
   Pause,
   Play,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const About = () => {
@@ -54,18 +55,21 @@ const About = () => {
     },
   ];
 
-  // Intersection Observer
+  // Intersection Observer (fixed cleanup)
   useEffect(() => {
+    const currentSection = sectionRef.current;
+    if (!currentSection) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
-    if (sectionRef.current) observer.observe(sectionRef.current);
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
-    };
+
+    observer.observe(currentSection);
+
+    return () => observer.unobserve(currentSection);
   }, []);
 
   // Auto-play
@@ -122,7 +126,6 @@ const About = () => {
                 : "opacity-0 translate-y-10"
             }`}
           >
-            {/* Main Heading */}
             <div className="space-y-3 sm:space-y-4">
               <div className="inline-flex items-center px-3 sm:px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-xs sm:text-sm font-medium shadow-sm hover:shadow-md transition-shadow">
                 <MapPin className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
@@ -193,19 +196,18 @@ const About = () => {
                       className="w-full flex-shrink-0 relative"
                     >
                       <div className="relative h-48 sm:h-64 md:h-80 lg:h-96 xl:h-[500px]">
-                        <img
+                        <Image
                           src={image.image}
                           alt={image.alt}
-                          className="w-full h-full object-cover object-center"
-                          loading={index === 0 ? "eager" : "lazy"}
+                          fill
+                          className="object-cover object-center"
+                          priority={index === 0}
                         />
 
-                        {/* Badge */}
                         <div className="absolute top-2 sm:top-4 lg:top-6 left-2 sm:left-4 lg:left-6 px-2 sm:px-3 lg:px-4 py-1 sm:py-2 bg-white/95 backdrop-blur-sm text-gray-800 text-xs sm:text-sm font-semibold rounded-full shadow-lg border border-white/20">
                           {image.badge}
                         </div>
 
-                        {/* Title Overlay aligned properly */}
                         <div className="absolute bottom-2 sm:bottom-4 lg:bottom-6 left-2 sm:left-4 lg:left-6 right-2 sm:right-4 lg:right-6">
                           <h3 className="text-white text-sm sm:text-base lg:text-lg font-bold drop-shadow-lg">
                             {image.title}
