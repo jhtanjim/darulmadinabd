@@ -1,5 +1,5 @@
 "use client";
-import logo from "@/assets/Images/logo.png";
+import logo from "@/assets/Images/dm logo.png";
 import { navLink } from "@/constant/constant";
 import Image from "next/image";
 import Link from "next/link"; // make sure Link is imported

@@ -5,7 +5,6 @@ import {
   BookOpen,
   ChevronRight,
   Globe,
-  Heart,
   Star,
   Target,
 } from "lucide-react";
@@ -46,16 +45,7 @@ const About = () => {
         "To develop well-rounded individuals through comprehensive Islamic education, foster critical thinking and creativity, promote moral and ethical values, encourage community service and social responsibility, provide modern educational facilities with traditional Islamic teachings.",
       color: "#2E6D72",
     },
-    {
-      id: "purpose",
-      title: "Purpose of Establishment",
-      icon: <Heart className="w-8 h-8" />,
-      image:
-        "https://darulmadinah.edu.in/wp-content/uploads/sb-instagram-feed-images/345062842_3427257624204917_315296764152484219_nfull.jpg",
-      content:
-        "Darul Madinah Education Foundation was established to bridge the gap between modern education and Islamic values, creating an environment where students can excel academically while staying connected to their faith and cultural heritage.",
-      color: "#186d46",
-    },
+
     {
       id: "features",
       title: "Salient Features",

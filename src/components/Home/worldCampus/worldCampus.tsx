@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-import WorldMap from "@/components/ui/world-map";
 import logo1 from "../../../assets/Images/campuslogo/logo-01.webp";
 import logo2 from "../../../assets/Images/campuslogo/logo-02.webp";
 import logo3 from "../../../assets/Images/campuslogo/logo-03.webp";
@@ -31,7 +30,7 @@ const worldCampus = () => {
           ))}
         </Marquee>
       </div>
-      <WorldMap />
+      {/* <WorldMap /> */}
     </section>
   );
 };

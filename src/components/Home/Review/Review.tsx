@@ -93,7 +93,7 @@ const Review = () => {
             className="text-4xl md:text-5xl font-bold mb-4"
             style={{ color: "#186d46" }}
           >
-            Client Testimonials
+            Parents Review
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-6">
             See what our satisfied clients have to say about their experience

@@ -31,7 +31,7 @@ const CurriculumSection = () => {
             <GraduationCap className="w-8 h-8 text-white" />
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-            Curriculum Department
+            Academic Updates
           </h2>
           <div className="w-24 h-1 bg-white/60 mx-auto"></div>
         </div>

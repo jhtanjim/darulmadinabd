@@ -172,25 +172,6 @@ const PublicationPage = () => {
       </main>
 
       {/* Footer Section */}
-      <footer className="bg-[#186d46] text-white py-12 mt-16">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <h3 className="text-2xl font-bold mb-4">
-            Explore More Islamic Publications
-          </h3>
-          <p className="text-green-100 max-w-2xl mx-auto mb-8">
-            Join thousands of students learning with our comprehensive Islamic
-            education materials
-          </p>
-          <div className="flex justify-center gap-4">
-            <button className="bg-[#61ce70] hover:bg-green-500 px-8 py-3 rounded-xl font-medium transition-colors duration-300">
-              Browse All Books
-            </button>
-            <button className="border-2 border-green-200 hover:bg-white hover:text-[#186d46] px-8 py-3 rounded-xl font-medium transition-colors duration-300">
-              Subscribe for Updates
-            </button>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
